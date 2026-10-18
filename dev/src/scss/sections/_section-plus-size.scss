@@ -1,0 +1,98 @@
+@use "../tools" as *;
+
+.section-plus-size {
+	&__container {
+		display: grid;
+		grid-template-columns: 1.35fr 2fr;
+		gap: 20px;
+
+		@include media($mobile) {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	&__content {
+		@include flex-column;
+		align-items: start;
+		justify-content: center;
+
+		@include media($mobile, min) {
+			@include card-box;
+		}
+
+		@include media($mobile) {
+			align-items: center;
+		}
+	}
+
+	.section-header {
+		&:not(:last-child) {
+			margin-bottom: adapt(40, 20);
+		}
+	}
+
+	&__btn {
+		&:not(:last-child) {
+			margin-bottom: adapt(60, 20);
+		}
+	}
+
+	&__features {
+		--gap-x: #{adapt(28, 18, $finishBreakpoint, $tablet)};
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: var(--gap-x);
+
+		@include media($tablet) {
+			--gap-x: 18px;
+		}
+	}
+
+	&__feature {
+		color: var(--color-text-primary);
+
+		&:not(:last-child) {
+			padding-right: var(--gap-x);
+			border-right: 1px solid var(--color-text-primary);
+		}
+
+		@include media($tablet, min) {
+			@include text-label;
+		}
+		@include media($tablet) {
+			@include text-caption;
+			text-align: center;
+		}
+	}
+
+	&__feature-text {
+	}
+
+	&__images {
+		position: relative;
+	}
+
+	&__image-big {
+		width: adapt(488, 253, $finishBreakpoint, $tablet);
+		height: adapt(1052, 547, $finishBreakpoint, $tablet);
+	}
+
+	&__image-small {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		right: -100px;
+		width: adapt(488, 198, $finishBreakpoint, $laptop);
+		height: adapt(704, 286, $finishBreakpoint, $laptop);
+
+		@include media($tablet) {
+			top: unset;
+			bottom: 0;
+			transform: translateY(0);
+			right: 0;
+		}
+	}
+
+	&__image-box {
+	}
+}

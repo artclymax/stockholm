@@ -1,0 +1,52 @@
+@use "../tools" as *;
+
+:root {
+	--color-0: rgba(0, 0, 0, 0);
+	--color-black: #000;
+	--color-white: #fff;
+
+	// ===== Colors ======
+	/* ===== Backgrounds (Фоны) ===== */
+	--color-bg-warm: #f6f2ee; /* основной тёплый фон */
+	--color-bg-surface: #ffffff; /* карточки товаров, меню, формы */
+	--color-bg-contrast: #1e1e1e; /* контрастные секции, футер */
+	--color-bg-subtle: #eae4df; /* подложки, фильтры, спокойные секции */
+	--color-bg-accent-light: #ebd9dd; /* светлая акцентная подложка */
+
+	/* ===== Typography (Текст) ===== */
+	--color-text-primary: #1e1e1e; /* заголовки и основной текст */
+	--color-text-secondary: #6e6864; /* описания и второстепенная информация */
+	--color-text-inverse: #ffffff; /* текст на тёмном фоне */
+
+	/* ===== UI & Borders (Интерфейс и границы) ===== */
+	--color-border: #ddd7d2; /* границы карточек и полей */
+
+	/* ===== Accents & States (Акценты и состояния) ===== */
+	--color-accent: #8e3346; /* акцентные кнопки, акции, активные элементы */
+	--color-accent-hover: #742738; /* наведение на акцентную кнопку */
+	--color-success: #497257; /* товар в наличии, успешная оплата */
+	--color-error: #b64141; /* ошибки формы и предупреждения */
+
+	// ===== Layouts =====
+	--header-height: 138px;
+
+	@include media($tablet) {
+		--header-height: 116px;
+	}
+
+	--section-padding: #{adapt(120, 60)};
+	--section-padding-05: #{adapt(60, 30)};
+
+	--container-width: 1200px;
+	--container-padding: 10px;
+
+	// ===== Fonts =====
+	--font-size-html: 100%;
+	--font-size: 16px;
+
+	--font-family-main: "Manrope-VF", "Manrope", sans-serif;
+	--font-family-secondary: "Prata-VF", "Prata", serif;
+
+	--line-height: 130%;
+	--letter-spacing: 0%;
+}

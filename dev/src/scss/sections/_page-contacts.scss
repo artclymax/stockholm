@@ -1,0 +1,153 @@
+@use "../tools" as *;
+
+.section-contacts {
+	&__container {
+		@include flex-column;
+		gap: adapt(60, 40);
+	}
+
+	&__top {
+		display: grid;
+		grid-template-columns: 1fr 1.15fr;
+		gap: 60px adapt(80, 20, $mobile);
+
+		@include media($mobile) {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	&__info {
+		@include flex-column;
+		gap: 40px;
+	}
+
+	&__title {
+	}
+
+	&__details {
+		@include flex-column;
+		gap: adapt(20, 10);
+	}
+
+	&__socials {
+		@include flex-column;
+		gap: 20px;
+		@include media($mobile) {
+			margin-top: -20px;
+		}
+	}
+
+	&__socials-title {
+		@include media($mobile) {
+			@include title-3;
+		}
+	}
+
+	&__socials-list {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 24px;
+		align-items: center;
+	}
+
+	&__social-link {
+	}
+
+	&__map-column {
+		@include flex-column;
+		gap: 40px;
+	}
+
+	&__map-title {
+	}
+
+	&__map-box {
+		min-height: adapt(348, 266, $finishBreakpoint, $mobile);
+		height: 100%;
+		box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.25);
+
+		iframe {
+			border: none;
+			width: 100%;
+			height: 100%;
+		}
+	}
+
+	&__help {
+		padding: adapt(20, 10);
+		background: var(--color-bg-subtle);
+		box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.25);
+	}
+
+	&__help-container {
+		display: grid;
+		grid-template-columns: 1fr 1.5fr;
+		align-items: center;
+		gap: adapt(76, 20, $mobile);
+
+		@include media($mobile) {
+			grid-template-columns: 1fr;
+			justify-items: center;
+			text-align: center;
+		}
+	}
+
+	&__help-text {
+		@include flex-column;
+		gap: 20px;
+	}
+
+	&__help-title {
+	}
+
+	&__help-descr {
+	}
+
+	&__help-actions {
+		display: flex;
+		align-items: center;
+		gap: adapt(90, 20, $mobile);
+
+		@include media($mobile) {
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: center;
+		}
+	}
+
+	&__help-btn {
+		@include media($mobile, min) {
+			min-width: 322px;
+		}
+	}
+
+	&__help-instagram {
+		flex-shrink: 0;
+	}
+}
+.contacts-detail {
+	display: grid;
+	grid-template-columns: 1fr 3fr;
+	align-items: center;
+	gap: 10px;
+	color: var(--color-text-primary);
+
+	@include media($mobile, min) {
+		padding-bottom: 10px;
+		border-bottom: 1px solid var(--color-accent);
+	}
+
+	&__label {
+		@include text-caption;
+	}
+
+	&__value {
+		@include flex-column;
+		gap: 4px;
+		align-items: start;
+	}
+
+	&__link {
+		@include hover-link;
+	}
+}

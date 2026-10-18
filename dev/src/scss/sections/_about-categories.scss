@@ -1,0 +1,38 @@
+@use "../tools" as *;
+
+.section-about-categories {
+	&__container {
+		display: grid;
+		grid-template-columns: 1fr 1.2fr;
+		gap: adapt(40, 20, $mobile);
+		align-items: center;
+
+		@include media($mobile) {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	&__title {
+	}
+
+	&__links {
+		display: flex;
+		align-items: center;
+		gap: adapt(28, 20, $mobile);
+		flex-wrap: wrap;
+
+		@include media($mobile) {
+			flex-direction: column;
+			flex-wrap: nowrap;
+			
+		}
+	}
+
+	&__link {
+		@include text-quote;
+		color: var(--color-text-primary);
+		&::after {
+			color: var(--color-accent);
+		}
+	}
+}

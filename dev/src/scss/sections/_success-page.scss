@@ -1,0 +1,98 @@
+@use "../tools" as *;
+
+.success-page {
+	&__container {
+		@include flex-column;
+		align-items: center;
+		gap: 40px;
+
+		@include media($mobile) {
+			gap: 20px;
+		}
+	}
+	&__breadcrumbs {
+		align-self: start;
+		&:not(:last-child) {
+			@include media($mobile) {
+				margin-bottom: 20px;
+			}
+		}
+	}
+
+	&__header {
+		@include flex-column;
+		gap: adapt(20, 10);
+		text-align: center;
+		align-items: center;
+	}
+
+	&__order-label {
+		@include text-caption;
+		color: var(--color-accent-hover);
+	}
+
+	&__title {
+	}
+
+	&__descr {
+		@include text-body;
+		@include reset;
+	}
+
+	&__info-box {
+		width: 100%;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: adapt(40, 10, $tablet) adapt(20, 10, $tablet);
+		background: var(--color-bg-subtle);
+		gap: 20px;
+
+		@include media($tablet) {
+			flex-direction: column;
+			align-items: start;
+		}
+	}
+
+	&__info-item {
+		@include flex-column;
+		gap: 20px;
+	}
+
+	&__info-item-decor {
+		height: 63px;
+		width: 1px;
+		background: var(--color-accent-hover);
+
+		@include media($tablet) {
+			width: 100%;
+			height: 1px;
+		}
+	}
+
+	&__info-label {
+		@include text-caption;
+	}
+
+	&__info-value {
+		@include title-3;
+		font-size: 24px;
+		color: var(--color-text-primary);
+	}
+
+	&__actions {
+		@include flex-column;
+		gap: 20px;
+		align-items: center;
+	}
+
+	&__btn-primary {
+		@include media($mobile, min) {
+			min-width: 340px;
+			width: 100%;
+		}
+	}
+
+	&__btn-secondary {
+	}
+}

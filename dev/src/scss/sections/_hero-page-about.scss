@@ -1,0 +1,64 @@
+@use "../tools" as *;
+
+.hero-page-about {
+	padding-top: adapt(50, 20);
+	@include flex-column;
+	gap: adapt(50, 40);
+
+	&:not(:last-child) {
+		padding-bottom: adapt(30, 20);
+		position: relative;
+
+		&::after {
+			content: "";
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			transform: translateX(-50%);
+			width: var(--container-width);
+			height: 1px;
+			background: var(--color-accent);
+
+			@include media($laptop-sm) {
+				width: calc(100% - var(--container-padding) * 2);
+			}
+		}
+	}
+
+	&__top-container {
+	}
+	&__container {
+		--width: #{adapt(536, 380, $mobile)};
+		--gap: #{adapt(54, 24, $tablet)};
+
+		@include media($mobile) {
+			--width: auto;
+			gap: 40px;
+			padding-inline: var(--container-padding);
+		}
+	}
+
+	&__content {
+	}
+
+	&__breadcrumbs {
+	}
+
+	&__header {
+		@include flex-column;
+		gap: 20px;
+	}
+
+	&__title {
+	}
+
+	&__descr {
+	}
+
+	&__image-box {
+		height: adapt(400, 237, $finishBreakpoint, $mobile);
+		width: 100%;
+		flex-shrink: 0;
+		box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.25);
+	}
+}

@@ -1,0 +1,50 @@
+@use "../tools" as *;
+
+.section-about-look {
+	&__container {
+		--width: #{adapt(620, 420, $mobile)};
+		--gap: 0px;
+
+		@include media($mobile) {
+			--width: auto;
+			gap: 40px;
+			padding-inline: var(--container-padding);
+			flex-direction: column-reverse;
+			padding-block: 20px;
+			border-block: 1px solid var(--color-accent);
+		}
+	}
+
+	&__image-box {
+		min-height: adapt(358, 237, $finishBreakpoint, $mobile);
+		height: 100%;
+		--object-post: top;
+		box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.25);
+	}
+
+	&__content {
+		min-height: 100%;
+		@include flex-column;
+		gap: adapt(20, 10);
+		justify-content: center;
+		align-items: start;
+
+		@include media($mobile, min) {
+			padding-left: adapt(55, 20, $mobile);
+			border-block: 1px solid var(--color-accent);
+			padding-block: 20px;
+		}
+	}
+
+	&__title {
+	}
+
+	&__descr {
+	}
+
+	&__btn {
+		@include media($mobile, min) {
+			min-width: 322px;
+		}
+	}
+}

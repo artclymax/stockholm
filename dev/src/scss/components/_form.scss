@@ -1,0 +1,286 @@
+@use "../tools" as *;
+
+.form-field-hidden {
+	display: none;
+}
+
+.form-wrapper {
+	display: grid;
+	gap: 20px;
+	align-items: start;
+	grid-template-columns: 1fr;
+	align-items: flex-end;
+
+	.wpcf7-spinner {
+		@include reset;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+
+	input[type="submit"],
+	input[type="button"] {
+		text-wrap: wrap;
+	}
+
+	& > p {
+		@include reset;
+	}
+}
+
+//.form-wrapper-grid {
+//	display: grid;
+//	grid-template-columns: 1fr 1fr;
+//	@include media($mobile) {
+//		grid-template-columns: 1fr;
+//	}
+//	.form-field--btn {
+//		@include media($mobile, min) {
+//			justify-self: start;
+//		}
+//		.btn {
+//			justify-content: center;
+//		}
+//	}
+//}
+
+.form-field--btn {
+	width: 100%;
+	@include media($mobile, min) {
+		justify-self: start;
+	}
+}
+.form-reset-btn {
+	@include reset-btn;
+	width: initial;
+}
+.form-field-full {
+	grid-column: 1 / -1;
+}
+.form-field > p {
+	@include reset;
+	@include flex-column;
+	gap: 10px;
+
+	.form-field__label {
+		@include text-caption;
+	}
+}
+.form-field-acceptance {
+	//grid-column: 1 / -1;
+
+	//@include media($laptop-sm, min) {
+	//	order: 4;
+	//}
+}
+
+.form-input {
+	//@include text-input;
+	border: 1px solid var(--color-border);
+	padding: 14px 16px;
+
+	width: 100%;
+	transition: all 0.3s;
+	background: var(--color-white);
+
+	&::placeholder {
+		opacity: 1;
+	}
+
+	@include focus {
+		border-color: var(--color-accent);
+	}
+
+	&.wpcf7-not-valid {
+		border-color: red;
+	}
+}
+.form-textarea {
+	resize: none;
+	height: 80px;
+}
+
+//.form-btn {
+//	flex-shrink: 0;
+//	justify-self: start;
+//	@include media($mobile) {
+//	}
+//	.form-wrapper-grid & {
+//		order: -1;
+//	}
+//}
+// VALID-TIP
+.wpcf7-form-control-wrap {
+	position: relative;
+}
+.wpcf7-not-valid-tip {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	transform: translateY(100%);
+	font-size: 12px;
+}
+
+// ACCEPTANCE
+.wpcf7-acceptance {
+	* {
+		@include reset;
+	}
+
+	input {
+		display: none;
+	}
+	input:checked ~ .wpcf7-list-item-label {
+		.form-checkbox-icon {
+			background-color: var(--color-accent);
+			//border-color: var(--color-accent);
+			&::before {
+				opacity: 1;
+			}
+		}
+	}
+	.wpcf7-list-item-label {
+		&::before,
+		&::after {
+			display: none;
+		}
+		display: flex;
+		align-items: center;
+		gap: 20px;
+	}
+
+	.form-checkbox-icon {
+		flex-shrink: 0;
+		@include flex-center;
+		@include square(32px);
+		border: 1px solid var(--color-accent);
+		//border-radius: 2px;
+		background-color: var(--color-0);
+		overflow: hidden;
+
+		&::before {
+			content: "";
+			@include square(100%);
+			@include bgimg(url("../../../public/images/icons/check-icon.svg"), 24px);
+			transition: all 0.3s;
+			opacity: 0;
+		}
+	}
+
+	.form-checkbox-text {
+		color: var(--color-text-primary);
+		@include media($mobile, min) {
+			@include text-label;
+		}
+		@include media($mobile) {
+			@include text-body-s;
+		}
+		a {
+			text-decoration: none;
+			color: inherit;
+			transition: all 0.3s;
+			@include hover {
+				color: var(--color-accent);
+			}
+		}
+	}
+}
+
+//! CUSTOM FILE BTN
+.form-file {
+	display: none;
+}
+.file-label {
+	border: 2px dashed var(--color-border);
+	padding: 12px 16px;
+	background: rgba(#e5e7eb, 0.2);
+	display: flex;
+	gap: 5px;
+	font-weight: 500;
+	&::before {
+		content: "";
+		flex-shrink: 0;
+		display: inline-flex;
+		@include square(30px);
+		@include bgimg(url("../../../public/images/icons/file-icon-2.svg"));
+	}
+	&__text {
+		display: none;
+		//@include flex-column;
+		//gap: 4px;
+		//p {
+		//	@include reset;
+		//	@include flex-column;
+		//	gap: 4px;
+		//}
+
+		//span {
+		//}
+
+		//.title-font {
+		//}
+
+		//.second-file-info {
+		//	font-size: 14px;
+		//	color: var(--color-gray-3);
+		//}
+	}
+}
+.file-text {
+	@include flex-column;
+	gap: 4px;
+	p {
+		@include reset;
+		@include flex-column;
+		gap: 4px;
+	}
+
+	span {
+	}
+
+	.title-font {
+	}
+
+	.second-file-info {
+		font-size: 14px;
+		color: var(--color-gray-3);
+	}
+}
+
+.form-wrapper--grid {
+	@include media($tablet, min) {
+		gap: 20px 10px;
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+
+	.form-field--btn {
+		@include media($tablet, min) {
+			grid-column: 3;
+			grid-row: 1;
+			justify-self: end;
+
+			.btn {
+				padding-inline: 14px;
+			}
+		}
+	}
+}
+
+.form-wrapper--light {
+	.form-input {
+		padding: 14px 10px;
+		font-size: 14px;
+	}
+	.form-checkbox-icon {
+		border-color: var(--color-white);
+	}
+	.form-checkbox-text {
+		a {
+			@include hover {
+				color: var(--color-warm-light);
+				opacity: 0.6;
+			}
+		}
+	}
+}

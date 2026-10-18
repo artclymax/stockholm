@@ -1,0 +1,108 @@
+@use "../tools" as *;
+
+.hero {
+	position: relative;
+	z-index: 1;
+	padding-top: 134px;
+	padding-bottom: 60px !important;
+
+	& + section {
+		padding-top: var(--section-padding);
+	}
+
+	@include media($mobile) {
+		padding-top: adapt(400, 204, $finishBreakpoint, $mobile);
+		padding-bottom: 0 !important;
+	}
+
+	&__container {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+	}
+
+	&__content {
+		box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.25);
+		background: var(--color-bg-surface);
+
+		border: 1px solid var(--color-border);
+		padding: adapt(60, 10) adapt(82, 10) adapt(40, 10);
+		width: 100%;
+
+		@include media($mobile, min) {
+			max-width: 590px;
+		}
+	}
+
+	&__label {
+		@include media($mobile, min) {
+			@include text-link;
+		}
+		&:not(:last-child) {
+			margin-bottom: adapt(60, 20);
+		}
+	}
+
+	&__title {
+		padding-bottom: 20px;
+		position: relative;
+
+		&::after {
+			content: "";
+			position: absolute;
+			bottom: 0;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 98px;
+			height: 1px;
+			background: var(--color-accent-hover);
+		}
+		&:not(:last-child) {
+			margin-bottom: adapt(40, 20);
+		}
+	}
+
+	&__descr {
+		&:not(:last-child) {
+			margin-bottom: adapt(40, 20);
+		}
+	}
+
+	&__buttons {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 10px 20px;
+		@include media($tablet) {
+			flex-wrap: wrap;
+		}
+		&:not(:last-child) {
+			margin-bottom: 20px;
+		}
+	}
+
+	&__link-box {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		gap: 10px 20px;
+
+		@include media($tablet) {
+			flex-wrap: wrap;
+		}
+	}
+
+	&__link {
+	}
+
+	&__bg-box {
+		@include image-abs;
+		z-index: -1;
+		--object-pos: top;
+
+		@include media($mobile) {
+			--object-pos: center 20%;
+		}
+	}
+}

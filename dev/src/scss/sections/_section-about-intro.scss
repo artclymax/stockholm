@@ -1,0 +1,39 @@
+@use "../tools" as *;
+
+.section-about-intro {
+	&__container {
+		--width: #{adapt(590, 420, $mobile)};
+		--gap: 0px;
+
+		@include media($mobile) {
+			--width: auto;
+			gap: 40px;
+			padding-inline: var(--container-padding);
+			padding-bottom: 20px;
+			border-bottom: 1px solid var(--color-accent);
+		}
+	}
+
+	&__content {
+		padding-right: adapt(54, 24, $tablet);
+		@include flex-column;
+		gap: adapt(20, 10);
+
+		@include media($mobile, min) {
+			border-bottom: 1px solid var(--color-accent);
+		}
+	}
+
+	&__title {
+	}
+
+	&__descr {
+	}
+
+	&__image-box {
+		min-height: adapt(444, 237, $mobile);
+		width: 100%;
+		flex-shrink: 0;
+		box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.25);
+	}
+}

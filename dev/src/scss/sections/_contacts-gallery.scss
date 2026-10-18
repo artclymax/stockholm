@@ -1,0 +1,37 @@
+@use "../tools" as *;
+
+.section-contacts-gallery {
+	&__container {
+	}
+
+	&__title {
+		text-wrap: balance;
+	}
+
+	&__swiper {
+		@include flex-column;
+		display: flex !important;
+		gap: 20px;
+	}
+
+	&__slide {
+		box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.25);
+	}
+
+	&__image-box {
+		height: adapt(348, 306, $finishBreakpoint, $mobile);
+		overflow: hidden;
+		@include hover {
+			img {
+				transform: scale(1.1);
+			}
+		}
+
+		img {
+			transition: all 0.3s;
+		}
+	}
+
+	&__pagination {
+	}
+}

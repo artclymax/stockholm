@@ -1,0 +1,439 @@
+@use "../tools" as *;
+@use "../components/btn" as *;
+
+.section-look {
+	&__container {
+	}
+
+	&__layout {
+		display: grid;
+		grid-template-columns: 1fr 1.4fr;
+		gap: 20px;
+		grid-template-rows: auto 1fr;
+
+		@include media($mobile) {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	/* Превью образа */
+	&__preview {
+		position: relative;
+		width: 100%;
+		@include media($mobile, min) {
+			grid-column: 1;
+			grid-row: 1 / 3;
+		}
+	}
+
+	&__image-wrap {
+		position: relative;
+		background-color: var(--color-bg-subtle);
+		min-height: adapt(1052, 776, $finishBreakpoint, $tablet);
+	}
+
+	.section-header {
+		@include media($mobile) {
+			margin-bottom: 20px;
+		}
+	}
+
+	/* Правая колонка */
+	&__content {
+		@include flex-column;
+		gap: 20px;
+	}
+
+	/* Аккордеон элементов */
+	&__items {
+		@include flex-column;
+		gap: 20px;
+	}
+
+	&__footer {
+		display: flex;
+		gap: 20px;
+		margin-top: adapt(20, 0, $mobile);
+
+		@include media($mobile) {
+			flex-direction: column;
+		}
+
+		.btn-primary {
+		}
+
+		.btn-outline {
+		}
+	}
+}
+
+/* Строка отдельного товара в аккордеоне */
+.look-item {
+	transition: all 0.25s ease;
+
+	&__top {
+		display: flex;
+		gap: 20px;
+	}
+
+	&__thumb {
+		width: adapt(183, 80, $finishBreakpoint, $mobile);
+		height: adapt(166, 70, $finishBreakpoint, $mobile);
+		flex-shrink: 0;
+		background: var(--color-bg-subtle);
+		overflow: hidden;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+	&__wrapper {
+		width: 100%;
+	}
+	&__header {
+		display: flex;
+		gap: 10px;
+
+		@include media($mobile) {
+			flex-wrap: wrap;
+		}
+	}
+	&__number {
+		@include text-quote;
+		color: var(--color-text-primary);
+		width: 60px;
+
+		@include media($mobile) {
+			order: 1;
+		}
+	}
+
+	&__info {
+		@include flex-column;
+		gap: 10px;
+
+		@include media($mobile) {
+			flex: 1 1 100%;
+			order: 3;
+		}
+	}
+
+	&__name {
+		a {
+			@include reset-link;
+			@include hover {
+				color: var(--color-accent);
+			}
+		}
+	}
+
+	&__price {
+		@include text-product-price;
+		color: var(--color-text-primary);
+		display: flex;
+		align-items: center;
+		gap: 6px;
+
+		del {
+			@include text-product-old-price;
+			color: var(--color-text-secondary);
+			order: 2;
+		}
+		ins {
+			text-decoration: none;
+		}
+	}
+
+	&__actions {
+		margin-left: auto;
+
+		@include media($mobile) {
+			order: 2;
+		}
+	}
+
+	&__toggle {
+		background: none;
+		border: none;
+		cursor: pointer;
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		padding: 6px 0;
+
+		&-label {
+			@include text-btn-m;
+			text-decoration: underline;
+			color: var(--color-accent);
+		}
+
+		&-icon {
+			display: inline-block;
+			width: 16px;
+			height: 16px;
+			position: relative;
+
+			&::before,
+			&::after {
+				content: "";
+				position: absolute;
+				background-color: var(--color-text-primary);
+				transition: transform 0.2s ease;
+				background: var(--color-accent);
+			}
+
+			&::before {
+				top: 6px;
+				left: 0;
+				width: 14px;
+				height: 1.5px;
+			}
+
+			&::after {
+				top: 0;
+				left: 6px;
+				width: 1.5px;
+				height: 14px;
+			}
+		}
+	}
+
+	&.is-open &__toggle-icon::after {
+		transform: rotate(90deg);
+		opacity: 0;
+	}
+
+	/* Раскрывающийся блок с размерами и стандартной кнопкой */
+	&__dropdown {
+		display: none;
+		max-width: 420px;
+
+		@include media($mobile) {
+			padding-left: 0;
+		}
+
+		.variations,
+		.reset_variations,
+		.quantity,
+		.woocommerce-variation-description {
+			display: none !important;
+		}
+
+		.single_add_to_cart_button.button {
+			@include btn;
+
+			@include media($mobile, min) {
+				padding-block: 8px;
+			}
+
+			&.disabled {
+				opacity: 0.8;
+				cursor: not-allowed;
+			}
+			&.added {
+				display: none;
+			}
+		}
+	}
+	.added_to_cart.wc-forward {
+		//display: none;
+		@include btn;
+		@include media($mobile, min) {
+			padding-block: 8px;
+		}
+	}
+	&.is-open &__dropdown {
+		display: block;
+	}
+
+	&__simple-action {
+		.button {
+			transition: all 0.3s;
+			@include hover {
+				opacity: 0.8;
+			}
+		}
+	}
+}
+
+/* Плашки размеров (swatches) */
+.product-card__size-swatches {
+	display: flex;
+	gap: 6px;
+	flex-wrap: wrap;
+}
+
+/* ==========================================================================
+   Модалка выбора недостающих размеров
+   ========================================================================== */
+.look-modal {
+	position: fixed;
+	inset: 0;
+	z-index: 999;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	visibility: hidden;
+	opacity: 0;
+	transition: all 0.3s ease;
+	padding: 10px;
+
+	.admin-bar & {
+		padding-top: calc(var(--wp-admin--admin-bar--height) + 10px);
+		//top: var(--wp-admin-bar-height);
+		//height: calc(100dvh - var(--wp-admin-bar-height));
+	}
+
+	&.active {
+		visibility: visible;
+		opacity: 1;
+	}
+
+	&__overlay {
+		position: absolute;
+		inset: 0;
+		background: rgba(0, 0, 0, 0.5);
+	}
+
+	&__dialog {
+		position: relative;
+		background: var(--color-bg-warm);
+		width: 100%;
+		max-width: 580px;
+		overflow-y: auto;
+		padding: adapt(40, 10);
+		z-index: 2;
+		box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+		height: calc(100dvh - 20px);
+
+		.admin-bar & {
+			height: calc(100dvh - var(--wp-admin--admin-bar--height) - 20px);
+			//top: var(--wp-admin-bar-height);
+			//height: calc(100dvh - var(--wp-admin-bar-height));
+		}
+	}
+
+	&__close {
+		position: absolute;
+		top: 10px;
+		right: 10px;
+		background: none;
+		border: none;
+		cursor: pointer;
+		line-height: 1;
+		padding: 10px;
+		color: var(--color-accent);
+	}
+
+	&__title {
+		margin: 0 0 6px;
+	}
+
+	&__subtitle {
+		margin-bottom: 20px;
+	}
+
+	&__list {
+		@include flex-column;
+		gap: 16px;
+		margin-bottom: 24px;
+
+		.look-item__toggle {
+			display: none;
+		}
+
+		.look-item__dropdown {
+			display: block !important;
+			padding-left: 0;
+		}
+
+		.single_add_to_cart_button {
+			display: none !important;
+		}
+	}
+
+	&__actions {
+		flex-shrink: 0;
+		.btn-primary {
+			@include btn;
+			background-color: var(--color-accent);
+			color: var(--color-white);
+		}
+	}
+}
+/* Дополнительно скрываем дефолтный инпут количества WC в выпадающей форме */
+.look-item__dropdown {
+	.quantity,
+	.woocommerce-variation-price,
+	.woocommerce-variation-availability {
+		display: none !important;
+	}
+}
+
+/* Стилизация простой кнопки WooCommerce "В корзину" */
+.look-item__simple-action {
+	.button.ajax_add_to_cart {
+		background: none !important;
+		border: none !important;
+		color: var(--color-accent) !important;
+		padding: 0 !important;
+		cursor: pointer;
+		text-decoration: underline;
+		@include text-btn-m;
+		&:hover {
+			color: var(--color-accent-hover) !important;
+		}
+
+		&.loading {
+			opacity: 0.5;
+		}
+
+		&.added {
+			display: inline-block;
+		}
+	}
+
+	.added_to_cart.wc-forward {
+		display: none !important; // прячем назойливую ссылку "Просмотр корзины" рядом
+	}
+}
+
+/* Карточка товара внутри модалки невыбранных размеров */
+.look-modal-item {
+	background: var(--color-white);
+	padding: 12px;
+	border: 1px solid var(--color-border);
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+
+	&__head {
+		display: flex;
+		align-items: center;
+		gap: 12px;
+	}
+
+	&__img {
+		width: 50px;
+		height: 50px;
+		object-fit: cover;
+	}
+
+	&__title {
+		font-size: 14px;
+		font-weight: 500;
+		color: var(--color-text-primary);
+	}
+
+	&__price {
+		font-size: 13px;
+		color: var(--color-text-secondary);
+	}
+
+	&__sizes {
+		display: flex;
+		gap: 6px;
+	}
+}

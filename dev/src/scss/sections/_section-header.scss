@@ -1,0 +1,25 @@
+@use "../tools" as *;
+
+.section-header {
+	@include flex-column;
+
+	@include media($mobile) {
+		align-items: center;
+		text-align: center;
+	}
+
+	&__label {
+		&:not(:last-child) {
+			margin-bottom: 20px;
+		}
+	}
+
+	&__title {
+		&:not(:last-child) {
+			margin-bottom: adapt(20, 16);
+		}
+	}
+
+	&__descr {
+	}
+}

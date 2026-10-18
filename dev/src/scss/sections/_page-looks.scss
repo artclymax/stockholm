@@ -1,0 +1,88 @@
+@use "../tools" as *;
+
+.section-looks {
+	padding-top: 20px;
+	&__container {
+		@include flex-column;
+		gap: 40px;
+	}
+
+	&__grid {
+	}
+
+	&__empty {
+	}
+
+	&__actions {
+		display: flex;
+		justify-content: center;
+	}
+
+	&__load-more {
+	}
+}
+.looks-grid {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 20px;
+
+	@include media($mobile) {
+		grid-template-columns: 1fr;
+	}
+
+	&__item {
+	}
+}
+.looks-card {
+	&__link {
+		@include reset-link;
+		@include flex-column;
+		gap: 20px;
+
+		@include hover {
+			.looks-card__image-box img {
+				transform: scale(1.1);
+			}
+
+			.looks-card__title {
+				color: var(--color-accent-hover);
+			}
+
+			.looks-card__more::after {
+				transform: translateX(6px);
+			}
+		}
+	}
+
+	&__image-box {
+		height: adapt(985, 567, $tablet);
+		overflow: hidden;
+
+		img {
+			transition: all 0.3s;
+		}
+	}
+
+	&__content {
+		@include flex-column;
+	}
+
+	&__title {
+		transition: all 0.3s;
+		&:not(:last-child) {
+			margin-bottom: adapt(20, 1);
+		}
+	}
+
+	&__descr {
+		&:not(:last-child) {
+			margin-bottom: 20px;
+		}
+	}
+
+	&__more {
+		@include text-btn-l;
+		padding-bottom: 10px;
+		border-bottom: 1px solid currentColor;
+	}
+}

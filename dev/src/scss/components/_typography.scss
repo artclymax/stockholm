@@ -1,0 +1,143 @@
+@use "../tools" as *;
+//Typography
+.title,
+.title-1,
+.title-2,
+.title-3,
+.title-4,
+.title-5 {
+	@include reset;
+	line-height: var(--line-height);
+	color: var(--color-text-primary);
+}
+.upcase {
+	text-transform: uppercase;
+}
+.t-center {
+	text-align: center !important;
+}
+
+// ==========================================
+// 1. Заголовки и крупные тексты (Headings)
+// ==========================================
+.text-display {
+	@include text-display;
+}
+
+.title-1 {
+	@include title-1;
+}
+
+.title-2 {
+	@include title-2;
+}
+
+.title-3 {
+	@include title-3;
+}
+
+.title-4 {
+	@include title-4;
+}
+
+.title-5 {
+	@include title-5;
+}
+
+.text-quote {
+	@include text-quote;
+}
+
+// ==========================================
+// 2. Основной текст и навигация (Body & Nav)
+// ==========================================
+.text-body {
+	@include text-body;
+}
+
+.text-body-xl {
+	@include text-body-xl;
+}
+
+.text-body-m {
+	@include text-body-m;
+}
+
+.text-body-s {
+	@include text-body-s;
+}
+
+.text-navigation {
+	@include text-navigation;
+}
+
+.text-caption {
+	@include text-caption;
+}
+
+.text-link {
+	@include text-link;
+}
+
+// ==========================================
+// 3. Интерфейс и кнопки (UI & Buttons)
+// ==========================================
+.text-btn {
+	@include text-btn;
+}
+
+.text-btn-l {
+	@include text-btn-l;
+}
+
+.text-btn-m {
+	@include text-btn-m;
+}
+
+.text-label {
+	@include text-label;
+}
+
+// ==========================================
+// 4. Товары (E-commerce / Product)
+// ==========================================
+.text-product-title {
+	@include text-product-title;
+}
+
+.text-product-category {
+	@include text-product-category;
+}
+
+.text-product-price-l {
+	@include text-product-price-l;
+}
+
+.text-product-price {
+	@include text-product-price;
+}
+
+.text-product-old-price {
+	@include text-product-old-price;
+}
+
+.text-product-attribute {
+	@include text-product-attribute;
+}
+
+.text-product-status {
+	@include text-product-status;
+}
+
+// ==========================================
+// 5. Фильтры (Filters)
+// ==========================================
+.text-filter-title {
+	@include text-filter-title;
+}
+
+.text-filter-option {
+	@include text-filter-option;
+}
+
+

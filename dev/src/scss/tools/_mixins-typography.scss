@@ -1,0 +1,204 @@
+@use "functions" as *;
+@use "mixins" as *;
+@use "constants" as *;
+
+@mixin text-display {
+	@include reset;
+	font-family: var(--font-family-secondary);
+	font-size: adapt(84, 48);
+	font-weight: 400;
+	line-height: 110%;
+	letter-spacing: -0.02em;
+}
+
+@mixin title-1 {
+	@include reset;
+	font-family: var(--font-family-secondary);
+	font-size: adapt(64, 40);
+	font-weight: 400;
+	line-height: 113%;
+	letter-spacing: -0.01em;
+}
+
+@mixin title-2 {
+	@include reset;
+	font-family: var(--font-family-secondary);
+	font-size: adapt(44, 30);
+	font-weight: 400;
+	line-height: 123%;
+	letter-spacing: -0.01em;
+}
+
+@mixin title-3 {
+	@include reset;
+	font-family: var(--font-family-secondary);
+	font-size: adapt(30, 24);
+	font-weight: 400;
+	line-height: 127%;
+	letter-spacing: -0.01em;
+}
+
+@mixin title-4 {
+	@include reset;
+	font-size: adapt(28, 22);
+	font-weight: 600;
+	line-height: 129%;
+	letter-spacing: -0.01em;
+}
+
+@mixin title-5 {
+	@include reset;
+	font-size: adapt(22, 18);
+	font-weight: 600;
+	line-height: 136%;
+	letter-spacing: -0.01em;
+}
+
+@mixin text-quote {
+	@include reset;
+	font-family: var(--font-family-secondary);
+	font-size: adapt(26, 21);
+	font-weight: 400;
+	font-size: 26px;
+	line-height: 146%;
+}
+
+// ===========================
+
+@mixin text-body {
+	font-size: adapt(18, 15);
+	font-weight: 600;
+	line-height: 144%;
+
+	@include media($mobile) {
+		font-weight: 400;
+	}
+}
+
+@mixin text-navigation {
+	font-size: adapt(14, 15);
+	font-weight: 500;
+	font-size: 14px;
+	line-height: 143%;
+	letter-spacing: 0.01em;
+
+	@include media($mobile) {
+		font-size: 16px;
+	}
+}
+@mixin text-btn-l {
+	font-size: 15px;
+	font-weight: 600;
+	line-height: 133%;
+
+	@include media($mobile) {
+		@include text-btn;
+	}
+}
+
+@mixin text-btn-m {
+	font-size: 14px;
+	font-weight: 600;
+	line-height: 129%;
+}
+
+@mixin text-btn {
+	@include text-btn-m;
+}
+
+@mixin text-label {
+	font-size: 12px;
+	font-weight: 600;
+	line-height: 133%;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+@mixin text-body-xl {
+	font-size: adapt(20, 17);
+	font-weight: 400;
+	line-height: 150%;
+}
+
+@mixin text-body-m {
+	font-size: 16px;
+	font-weight: 400;
+	line-height: 156%;
+}
+
+@mixin text-body-s {
+	font-size: adapt(14, 13);
+	font-weight: 400;
+	line-height: 150%;
+}
+
+@mixin text-caption {
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 142%;
+}
+
+@mixin text-link {
+	font-size: 14px;
+	font-weight: 500;
+	line-height: 143%;
+}
+
+@mixin text-product-title {
+	font-size: adapt(16, 14);
+	font-weight: 500;
+	line-height: 144%;
+}
+
+@mixin text-product-category {
+	font-size: 12px;
+	font-weight: 400;
+	line-height: 142%;
+}
+
+@mixin text-product-price-l {
+	font-size: 24px;
+	font-weight: 600;
+	line-height: 125%;
+
+	@include media($mobile) {
+		@include text-product-price;
+	}
+}
+
+@mixin text-product-price {
+	font-size: adapt(17, 16);
+	font-weight: 600;
+	line-height: 135%;
+}
+
+@mixin text-product-old-price {
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 143%;
+}
+
+@mixin text-product-attribute {
+	font-size: 13px;
+	font-weight: 500;
+	line-height: 138%;
+}
+
+@mixin text-product-status {
+	font-size: 11px;
+	font-weight: 600;
+	line-height: 136%;
+	letter-spacing: 0.05em;
+}
+
+@mixin text-filter-title {
+	font-size: 15px;
+	font-weight: 600;
+	line-height: 140%;
+}
+
+@mixin text-filter-option {
+	font-size: 14px;
+	font-weight: 400;
+	line-height: 150%;
+}

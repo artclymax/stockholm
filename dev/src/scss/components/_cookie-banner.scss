@@ -1,0 +1,95 @@
+@use "../tools" as *;
+@use "btn" as *;
+.cookie-banner {
+	@include reset;
+	padding-bottom: adapt(10, 0, $mobile);
+	background: var(--color-0);
+}
+.cookie-banner-container {
+	border: 2px solid var(--color-accent-hover);
+	background: var(--color-bg-warm);
+	padding: adapt(20, 10, $mobile);
+	display: flex;
+	max-width: 852px;
+	gap: adapt(40, 20, $mobile);
+
+	@include media($mobile) {
+		max-width: 100%;
+		flex-direction: column;
+		gap: 20px;
+	}
+}
+.cookie-banner-content {
+}
+.cookie-banner-title {
+	@include text-body;
+	display: flex;
+	gap: 12px;
+	align-items: center;
+
+	&::after {
+		content: "";
+		@include square(20px);
+		@include bgimg(url("../../../public/images/icons/cookie-icon.svg"));
+	}
+}
+.cookie-banner-description {
+	& > *:last-child {
+		margin-bottom: 0;
+	}
+	& > *:first-child {
+		margin-top: 0;
+	}
+	@include text-btn-m;
+
+	@include media($mobile) {
+		@include text-body-s;
+	}
+}
+.cookie-actions {
+	width: 100%;
+	flex-shrink: 0;
+	justify-content: center;
+	margin: unset;
+	@include media($mobile, min) {
+		max-width: 300px;
+	}
+}
+.cookie-btn {
+}
+.cookie-btn-equal {
+	@include btn;
+	border-radius: 0;
+	min-width: 100%;
+}
+.cookie-btn-link {
+	padding: unset;
+}
+// MODALS
+.cookie-modal {
+	.cookie-btn-equal {
+		@include media($mobile, min) {
+			min-width: initial;
+			flex: 1;
+		}
+	}
+}
+
+.cookie-modal-dialog {
+	--artcly-cc-chk-bg-active: var(--color-accent);
+	--artcly-cc-chk-bg-active: var(--color-accent);
+	--artcly-cc-close-color: var(--color-accent);
+	--artcly-cc-chk-disabled-bg: var(--color-accent);
+	padding: adapt(20, 10, $mobile);
+	border: 2px solid var(--color-accent-hover);
+	background: var(--color-bg-warm);
+	border-radius: 0;
+	overflow: auto;
+}
+.cookie-modal-dialog-close-btn {
+	top: 8px;
+	right: 10px;
+}
+.cookie-setting-row input:disabled ~ span::before {
+	opacity: 0.7;
+}

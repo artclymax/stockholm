@@ -1,0 +1,101 @@
+@use "../tools" as *;
+
+.header {
+	&__top {
+		padding-block: 10px;
+		background: var(--color-bg-subtle);
+		border-bottom: 1px solid var(--color-border);
+		color: var(--color-text-primary);
+		text-align: center;
+	}
+
+	&__top-container {
+	}
+
+	&__bottom {
+		padding-block: 10px;
+		background: var(--color-white);
+
+		@include media($tablet) {
+			background: var(--color-bg-warm);
+		}
+	}
+
+	&__bottom-container {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 20px;
+	}
+
+	&__logo {
+		flex-shrink: 0;
+		@include media($tablet) {
+			order: 2;
+		}
+	}
+
+	&__menu {
+	}
+
+	&__cart-btn {
+		@include square(44px);
+		@include flex-center;
+		border: 1px solid var(--color-accent);
+		color: var(--color-accent);
+		transition: all 0.3s;
+
+		@include hover {
+			background: var(--color-accent-hover);
+			color: var(--color-white);
+		}
+
+		@include media($tablet) {
+			order: 3;
+		}
+	}
+
+	&__burger-btn {
+		@include media($tablet) {
+			order: 1;
+		}
+	}
+}
+
+.header-menu {
+	@include media($tablet) {
+		gap: 20px;
+	}
+	&__main-menu {
+	}
+	&__col {
+		@include media($tablet) {
+			@include flex-column;
+			gap: 20px;
+		}
+	}
+	&__customer-menu {
+		a {
+			color: var(--color-text-primary);
+			@include hover {
+				opacity: 1;
+				color: var(--color-accent);
+			}
+		}
+	}
+	&__title {
+	}
+	&__list {
+	}
+	&__customer-list {
+	}
+	&__contacts-box {
+		a {
+			color: var(--color-text-primary);
+			@include hover {
+				opacity: 1;
+				color: var(--color-accent);
+			}
+		}
+	}
+}

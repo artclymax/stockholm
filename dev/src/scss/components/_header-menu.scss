@@ -1,0 +1,125 @@
+@use "../tools" as *;
+@use "../components/btn" as *;
+
+@mixin mobile-phone-box {
+	@include mobile-menu(var(--color-bg), ".open-phone-box", "header-phone-box") {
+		top: var(--header-height);
+		padding: 20px 10px;
+		//background: linear-gradient(
+		//	180deg,
+		//	rgba(255, 255, 255, 0.6) 0%,
+		//	rgba(246, 233, 238, 0.6) 50%,
+		//	rgba(255, 255, 255, 0.6) 100%
+		//);
+		//backdrop-filter: blur(10px);
+
+		.admin-bar & {
+			top: calc(var(--header-height) + var(--wp-admin--admin-bar--height));
+		}
+	}
+}
+// version 1
+@mixin mobile-menu-1 {
+	@include mobile-menu(var(--color-bg-warm), ".open-header-menu", ".header-menu__list") {
+		top: var(--header-height);
+		padding: 20px 10px 10px;
+
+		.admin-bar & {
+			top: calc(var(--header-height) + var(--wp-admin--admin-bar--height));
+		}
+	}
+}
+// version 2
+@mixin mobile-menu-2 {
+	gap: 0 !important;
+	.menu-close-btn {
+		align-self: end;
+	}
+	@include mobile-menu(var(--color-gray), ".open-header-menu", ".header-menu__list") {
+		--pad-block: 10px;
+		top: 0;
+		padding: var(--pad-block);
+		height: 100dvh;
+
+		.admin-bar & {
+			top: var(--wp-admin--admin-bar--height);
+			height: calc(100dvh - var(--wp-admin--admin-bar--height));
+		}
+	}
+}
+
+.header-menu {
+	@include media($tablet) {
+		@include mobile-menu-1;
+		gap: 20px !important;
+	}
+}
+
+.header-menu__list {
+	@include reset-list;
+	@include text-navigation;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	gap: 10px adapt(40, 24, $tablet);
+
+	@include media($tablet) {
+		@include title-3;
+		align-items: flex-start !important;
+		text-align: left;
+	}
+	@include media($mobile-sm) {
+		//align-items: flex-start !important;
+		//text-align: left !important;
+	}
+
+	li {
+		position: relative;
+		@include media($tablet) {
+			width: 100%;
+			&:not(:last-child) {
+				padding-bottom: 10px;
+				border-bottom: 1px solid var(--color-accent);
+			}
+		}
+	}
+
+	a {
+		@include media($tablet, min) {
+			//@include body-m;
+			//color: var(--color-black);
+		}
+
+		text-decoration: none;
+		color: inherit;
+		display: inline-flex;
+		transition: all 0.3s;
+		@include hover-link;
+		color: var(--color-text-primary);
+
+		@include hover {
+			//color: var(--color-accent-green-hv);
+		}
+		@include media($tablet) {
+			//font-size: 18px;
+			//&::after {
+			//	//display: none;
+			//}
+		}
+
+		&[aria-current],
+		.current-section {
+			color: var(--color-accent);
+			//font-weight: 600;
+			&::after {
+				transform: translateY(0);
+				opacity: 1;
+				//	right: 0;
+				//	left: 0;
+				//	width: 100%;
+				//	background: var(--color-accent-green);
+			}
+		}
+	}
+}
