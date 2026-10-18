@@ -1,8 +1,5 @@
-﻿# Exclude node_modules in dev folder
-dev/node_modules/
+﻿dev/node_modules/
 dev/node_modules/*
-
-# Standard Node and WP exclusions
 node_modules/
 dist/
 build/
